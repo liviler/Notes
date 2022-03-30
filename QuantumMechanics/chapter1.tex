@@ -1,0 +1,131 @@
+\newpage
+\section{波函数与薛定谔方程}
+\subsection{波粒二相性}
+\textbf{ 在经典力学中，当谈到一个“波动”时候，总是意味着某种实在的物理量的空间分布做周期变化，例如声波中的空气压强。}\\
+也就是说波动的体现可以从物理性质上是否有周期性的变化来看？\\
+\textbf{本质是呈现出干涉和衍射线现象，因为干涉和衍射的本质在于波的相干叠加性。}\\
+也就是说，干涉和衍射现象是检验波动的标注？或者是必要条件？\\
+
+\subsection{波函数}
+波函数$|\phi(r)|^2$的描述的物理属性是粒子的出现概率，叫做\textbf{几率波}.\\
+注意与经典波区分开来，经典波描述的是波幅在空间的变化情况。\\
+几率波就有归一化性质，同时几率波前面的系数也不影响几率分布情况。\\
+波函数归一化条件：\\
+\begin{equation}
+    \int{|\psi(\vec{r})|^2}d^3\vec{r}=1
+\end{equation}
+\underline{Q:既然$|\psi(\vec{r})|^2$描述的是几率,那么$|\psi(\vec{r})|$描述的是什么呢？} \\
+\underline{Q:为什么具有模为1的相位因子的波函数，$e^{i\alpha}\psi(\vec{r})$也是归一化的？}
+ \\
+ \\
+对于多个粒子的系统：
+\begin{equation}
+   \psi (\vec{r}_1,\vec{r}_2,\dots ,\vec{r}_N)
+\end{equation}
+其中$\vec{r}_i=\vec{r}_i(x_i,y_i,z_i)$，表示各粒子的空间坐标。\\
+此时：
+\begin{equation}
+    |\psi (\vec{r}_1,\vec{r}_2,\dots ,\vec{r}_N)|^2d^3\vec{r}_1d^3\vec{r}_2\dots d^3\vec{r}_N
+ \end{equation}
+ 表示：\\
+ 粒子1在$\vec{r}_1$附近，同时粒子2在$\vec{r}_2$附近，粒子3在$\vec{r}_3$附近......的几率。
+ 归一化条件为：
+ \begin{equation}
+   \int |\psi (\vec{r}_1,\vec{r}_2,\dots ,\vec{r}_N)|^2d^3\vec{r}_1d^3\vec{r}_2\dots d^3\vec{r}_N=1
+ \end{equation}
+ 简化表述为：\\
+\begin{equation}
+    (\psi,\psi)=\int d \tau \psi^*\psi=\int d \tau |\psi|^2=1
+\end{equation}
+\\
+{S:需要认识到，物质的粒子的波动性并不表现在我们以前认识到的实在的物理量的波动现象，例如不像水波\\可以看到在空间中的坐标的周期性。物质的波动性体现在几率上！也就是在空间中出现的概率具有波动性质，而波函数就是描述这种几率波的新的物理符号。}
+ 
+\subsection{动量分布}
+用$|\psi(\vec{p})|^2$表示粒子的动量分布几率，$\psi(\vec{p})$可以通过平面波$\psi(\vec{r})$傅里叶展开得到。
+\begin{equation}
+    \phi(\vec{p})=\frac{1}{(2\pi \hbar)^{3/2}}\int \psi(\vec{r}) e^ { -i \vec{p}\vec{r} / \hbar }d^3 \vec{r}
+\end{equation}
+
+且可以计算出：\\
+\begin{equation}
+    (\psi(\vec{p}),\psi(\vec{p}))=1
+\end{equation}
+
+\subsubsection{电子衍射实验}
+当电子垂直射入单晶表面时，衍射波将会以一定的角度出射，出射角度与入射波的动量有关。
+
+\subsubsection{测不准关系}
+如何理解动量和位置之间的不确定关系？
+
+\subsection{力学量平均值与算符}
+利用波函数可以计算力学量的平均值。
+
+例如位置的平均值就可以表示为:$\bar{x}=\int_{-\infty} ^{+\infty} |\psi(\vec{r})|^2x d^3r$
+
+而对动量平均值的计算，不能够使用波函数的平方作为概率，因为“粒子在空间上某一点的动量”是没有意义的，也就是说当确定某一点后就不能确定在该点的动量，
+$\bar{p}\neq \int_{-\infty} ^{+\infty} |\psi(\vec{r})|^2\vec{p}(\vec{r}) d^3r$。
+这个时候应该使用动量分布几率来计算动量的平均值：
+\begin{equation}
+    \bar{p} = \int_{-\infty} ^{+\infty} |\psi(\vec{p})|^2\vec{p} d^3p=\int_{-\infty} ^{+\infty} \psi^*(\vec{p}) \vec{p}\psi(\vec{p})  d^3p
+    =\int_{-\infty} ^{+\infty}  d^3r \psi^*(\vec{r})(-i\hbar \nabla)\psi(\vec{r}) 
+    =\int_{-\infty} ^{+\infty}  d^3r \psi^*(\vec{r}) \hat{\vec{p}} \psi(\vec{r}) 
+\end{equation}
+物理算符为：
+
+\begin{equation}
+     \hat{\vec{p}}=-i\hbar \nabla
+\end{equation}
+\begin{equation}
+    \hat{T}=-\frac{\hbar^2}{2m}\nabla^2
+\end{equation}
+
+\begin{equation}
+    \vec{{l}}=r \times \hat{\vec{p}}
+\end{equation}
+
+\subsection{薛定谔方程}
+具有一定能量的动能为$\boldsymbol{p}$的自由粒子的波函数为：  $\psi(r,t)\sim e^{i(\boldsymbol{k}r-wt)}=e^{i(\boldsymbol{p}r-Et)/\hbar}$\\
+由于其满足动量能量关系：$E=p^2/2m$\\
+可以推导出这个波函数满足的方程：
+\begin{equation}
+    i\hbar \frac{\partial}{\partial{t}}\psi(\boldsymbol{r},t)=-\frac{\hbar^2}{2m}\nabla^2\psi(\boldsymbol{r},t)
+\end{equation}
+可以证明，自由粒子一般状态的波函数(即动量不是一个单一的值,为多平面单色波的叠加)：
+$$\psi(\boldsymbol{r},t)=\frac{1}{(2\pi\hbar)^{3/2}} \int \varphi(\boldsymbol{p})e^{i(\boldsymbol{p}r-Et)/\hbar} d^3p$$
+依旧满足自由粒子的波函数。
+
+可以看到，在经典粒子的能量动量关系式$E=p^2/2m$ 做以下替换：
+$$ E\to i\hbar \frac{\partial}{\partial t} , \textbf{  } \boldsymbol{p}\to \boldsymbol{\hat{p}}=-i\hbar\nabla$$
+然后作用到波函数上，就能得到波动方程。
+
+同理对在势场$V(\boldsymbol{r})$中运动的粒子，满足能量关系式子：
+$$E=\frac{1}{2m}\boldsymbol{p}^2 + V(\boldsymbol{r})$$
+同样做以上替换，得到Schrodinger波动方程：
+\begin{equation}
+    i\hbar \frac{\partial}{\partial{t}}\psi(\boldsymbol{r},t)=\left[-\frac{\hbar^2}{2m}\nabla^2 +V(\boldsymbol{r}) \right]\psi(\boldsymbol{r},t)   
+\end{equation}
+Schrodinger波动方程的一般表示为：
+\begin{equation}
+    i \hbar\frac{\partial}{\partial t}\psi =\hat{H}\psi
+\end{equation}
+$\hat{H}$是体系的Hamilton算符。
+\subsubsection{不含时的薛定谔方程}
+若考虑势能$V$不随着时间变化，此时薛定谔方程可以用分离变量法求出特解：
+$$\psi(\boldsymbol{r},t)=\psi(\boldsymbol{r})f(t)$$
+带入薛定谔波动方程，得到:
+$$
+\frac{i\hbar}{f(t)}\frac{df}{dt}=
+\frac{1}{\psi(\boldsymbol{r})}\left[-\frac{\hbar^2}{2m}\nabla^2 +V(\boldsymbol{r}) \right]\psi(\boldsymbol{r},t)=E 
+$$
+故$f(t)\sim e^{-iEt/\hbar}$
+$$\psi(\boldsymbol{r},t)=\psi_E(\boldsymbol{r}) e^{-iEt/\hbar} $$
+$\psi_E(\boldsymbol{r})$又满足方程：
+$$\left[-\frac{\hbar^2}{2m}\nabla^2 +V(\boldsymbol{r}) \right]\psi(\boldsymbol{r},t)=E\psi(\boldsymbol{r})$$
+或者表示为：
+\begin{equation}
+    \hat{H}\psi=E\psi
+\end{equation}
+对于不含时的薛定谔方程，对于给定的任何E值，从数学角度上讲，都有解。\\
+\textbf{但是在物理上，并不是一切E值的解都满足物理要求(束缚态边界条件，周期性条件),而能够被接受的E值称为体系的能量本征值，对应的
+解$\psi_E(r)$称为能量本征函数。}\\
+初始时刻正好处于一个能量本征态(即不是若干能量本征态的叠加)的波函数描述的态是定态，定态具有特殊的不变性质(几率密度，几率流密度，力学量平均值，力学量测量几率分布不随时间变化)。
