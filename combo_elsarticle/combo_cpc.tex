@@ -1,0 +1,271 @@
+%% This template can be used to write a paper for
+%% Computer Physics Communications using LaTeX.
+%% For authors who want to write a computer program description,
+%% an example Program Summary is included that only has to be
+%% completed and which will give the correct layout in the
+%% preprint and the journal.
+%% The `elsarticle' style is used and more information on this style
+%% can be found at 
+%% http://www.elsevier.com/wps/find/authorsview.authors/elsarticle.
+%%
+%%
+% \documentclass[preprint,12pt]{elsarticle}
+
+%% Use the option review to obtain double line spacing
+%%\documentclass[preprint,review,12pt]{elsarticle}
+
+%% Use the options 1p,twocolumn; 3p; 3p,twocolumn; 5p; or 5p,twocolumn
+%% for a journal layout:
+%% \documentclass[final,1p,times]{elsarticle}
+%% \documentclass[final,1p,times,twocolumn]{elsarticle}
+\documentclass[final,3p,times]{elsarticle}
+%% \documentclass[final,3p,times,twocolumn]{elsarticle}
+%% \documentclass[final,5p,times]{elsarticle}
+%% \documentclass[final,5p,times,twocolumn]{elsarticle}
+
+%% if you use PostScript figures in your article
+%% use the graphics package for simple commands
+%% \usepackage{graphics}
+%% or use the graphicx package for more complicated commands
+%% \usepackage{graphicx}
+%% or use the epsfig package if you prefer to use the old commands
+%% \usepackage{epsfig}
+
+%% The amssymb package provides various useful mathematical symbols
+\usepackage{amssymb}
+%% The amsthm package provides extended theorem environments
+%% \usepackage{amsthm}
+
+%% The lineno packages adds line numbers. Start line numbering with
+%% \begin{linenumbers}, end it with \end{linenumbers}. Or switch it on
+%% for the whole article with \linenumbers after \end{frontmatter}.
+%% \usepackage{lineno}
+
+%% natbib.sty is loaded by default. However, natbib options can be
+%% provided with \biboptions{...} command. Following options are
+%% valid:
+
+%%   round  -  round parentheses are used (default)
+%%   square -  square brackets are used   [option]
+%%   curly  -  curly braces are used      {option}
+%%   angle  -  angle brackets are used    <option>
+%%   semicolon  -  multiple citations separated by semi-colon
+%%   colon  - same as semicolon, an earlier confusion
+%%   comma  -  separated by comma
+%%   numbers-  selects numerical citations
+%%   super  -  numerical citations as superscripts
+%%   sort   -  sorts multiple citations according to order in ref. list
+%%   sort&compress   -  like sort, but also compresses numerical citations
+%%   compress - compresses without sorting
+%%
+%% \biboptions{comma,round}
+
+% \biboptions{}
+
+%% This list environment is used for the references in the
+%% Program Summary
+%%
+\newcounter{bla}
+\newenvironment{refnummer}{%
+\list{[\arabic{bla}]}%
+{\usecounter{bla}%
+ \setlength{\itemindent}{0pt}%
+ \setlength{\topsep}{0pt}%
+ \setlength{\itemsep}{0pt}%
+ \setlength{\labelsep}{2pt}%
+ \setlength{\listparindent}{0pt}%
+ \settowidth{\labelwidth}{[9]}%
+ \setlength{\leftmargin}{\labelwidth}%
+ \addtolength{\leftmargin}{\labelsep}%
+ \setlength{\rightmargin}{0pt}}}
+ {\endlist}
+
+\journal{Computer Physics Communications}
+
+\begin{document}
+
+\begin{frontmatter}
+
+%% Title, authors and addresses
+
+%% use the tnoteref command within \title for footnotes;
+%% use the tnotetext command for the associated footnote;
+%% use the fnref command within \author or \address for footnotes;
+%% use the fntext command for the associated footnote;
+%% use the corref command within \author for corresponding author footnotes;
+%% use the cortext command for the associated footnote;
+%% use the ead command for the email address,
+%% and the form \ead[url] for the home page:
+%%
+%% \title{Title\tnoteref{label1}}
+%% \tnotetext[label1]{}
+%% \author{Name\corref{cor1}\fnref{label2}}
+%% \ead{email address}
+%% \ead[url]{home page}
+%% \fntext[label2]{}
+%% \cortext[cor1]{}
+%% \address{Address\fnref{label3}}
+%% \fntext[label3]{}
+
+
+\title{A Python package for the commutator of many-body operators}
+
+
+%% use optional labels to link authors explicitly to addresses:
+%% \author[label1,label2]{<author name>}
+%% \address[label1]{<address>}
+%% \address[label2]{<address>}
+
+\author[a]{Y.Li\corref{author}}
+% \author[a,b]{Second Author}
+% \author[b]{Third Author}
+
+\cortext[author] {Corresponding author.\\\textit{E-mail address:} liyi226@mail2.sysu.edu.cn}
+\address[a]{Address XXXX}
+% \address[b]{Second Address}
+
+\begin{abstract}
+%% Text of abstract
+
+In recent years, the In-Medium Similarity Renormalization Group (IMSRG) has been
+making great progress in ab initio nuclear many-body theory. At present, the many-body
+operator is generally truncated to two-body in the IMSRG. In order to extend the many-
+body truncation to the normal-ordered three-body level, it’s necessary to develop the IM-
+SRG(3), which involves a great number of complex calculation processes of many-body
+operators. Therefore, writing a computer program to achieve auto-calculation would help
+researchers reduce the cost of time and energy on such processes.
+
+To achieve the program, it is necessary to translate the theoretical calculation process
+into a series of algorithms and apply these algorithms to the calculation of symbols.Under
+the Python platform, based on the computer algebra system provided by SymPy, this
+Python package, called combo, can create objects of related classes to indicate the indi-
+cators and operators. By applying these objects to a series of algorithms, the combo can
+calculate the commutator of two arbitrary many-body operators. Moreover, after solv-
+ing the problem above, an interface function matching the Angular Momentum Coupling
+Program (AMC) is written and can give the result that coupled the angular momentum.
+
+Specifically, four modules in this package can: a) calculate the product and com-
+mutator of two arbitrary many-body operators, b) apply symbols’ rule c) regulate the
+expressions and provide some auxiliary functions. d) process the expressions for output.
+
+Based on the functions above, the combo package not only can reproduce the rele-
+vant calculational process in the IMSRG but also lays the foundation for the development
+of IMSRG(3).This paper introduces the function of each module of this package and il-
+lustrates the algorithm’s workflow in some logic diagrams.
+\end{abstract}
+
+\begin{keyword}
+%% keywords here, in the form: keyword \sep keyword
+Python \sep IMSRG\sep commutator of normal-ordered operators\sep combo
+
+\end{keyword}
+
+\end{frontmatter}
+
+%%
+%% Start line numbering here if you want
+%%
+% \linenumbers
+
+% All CPiP articles must contain the following
+% PROGRAM SUMMARY.
+
+{\bf \noindent Program summary}
+  %Delete as appropriate.
+
+\begin{small}
+\noindent
+{\em Program Title:} combo                                      \\
+{\em CPC Library link to program files:}  \\
+{\em Developer's repository link:} https://github.com/liviler/combo \\
+{\em Code Ocean capsule:}\\
+{\em Licensing provisions:} GPLv3\\
+{\em Programming language:} Python 3.10                                 \\
+{\em External routines:} sympy  \\
+% {\em Supplementary material:}                                  \\
+  % Fill in if necessary, otherwise leave out.
+% {\em Journal reference of previous version:}*                  \\
+  %Only required for a New Version summary, otherwise leave out.
+% {\em Does the new version supersede the previous version?:}*   \\
+  %Only required for a New Version summary, otherwise leave out.
+% {\em Reasons for the new version:*}\\
+  %Only required for a New Version summary, otherwise leave out.
+% {\em Summary of revisions:}*\\
+  %Only required for a New Version summary, otherwise leave out.
+{\em Nature of problem:}
+The IMSRG achieves success in nuclear physics research.
+However, the works to calculate the commutator of normal-ordered operators is  error-prone and would cost a lot of time. And the length of result will grows rapidly as a factorial function.\\
+{\em Solution method:}
+To calculate the product and commutator of normal-ordered operators, combo uses Wick's theorem to match all possible indicators combinations with the operators and ignore the inappropriate combinations.
+Afterwards, combo can splite the previous expression and regulate it. And you can display all attributes that store the result of your behaviour.
+Moreover, an interface function is given to match the Angular Momentum Coupling
+Program (AMC).
+% {\em Additional comments including restrictions and unusual features:}\\
+  %Provide any additional comments here.
+  %  \\
+
+
+% \begin{thebibliography}{0}
+% \bibitem{1}Reference 1         % This list should only contain those items referenced in the                 
+% \bibitem{2}Reference 2         % Program Summary section.   
+% \bibitem{3}Reference 3         % Type references in text as [1], [2], etc.
+%                                % This list is different from the bibliography at the end of 
+%                                % the Long Write-Up.
+% \end{thebibliography}
+% * Items marked with an asterisk are only required for new versions
+% of programs previously published in the CPC Program Library.\\
+\end{small}
+
+
+%% main text
+\newpage
+\input{section/Introduction.tex}
+
+\input{section/Background-theory.tex}
+
+\input{section/Implementation.tex}
+
+\input{section/Conclusion.tex}
+
+
+%% The Appendices part is started with the command \appendix;
+%% appendix sections are then done as normal sections
+%% \appendix
+
+%% \section{}
+%% \label{}
+
+%% References
+%%
+%% Following citation commands can be used in the body text:
+%% Usage of \cite is as follows:
+%%   \cite{key}         ==>>  [#]
+%%   \cite[chap. 2]{key} ==>> [#, chap. 2]
+%%
+
+%% References with bibTeX database:
+\cite{}
+\bibliographystyle{elsarticle-num}
+\bibliography{main.bib}
+
+%% Authors are advised to submit their bibtex database files. They are
+%% requested to list a bibtex style file in the manuscript if they do
+%% not want to use elsarticle-num.bst.
+
+%% References without bibTeX database:
+
+% \begin{thebibliography}{00}
+
+%% \bibitem must have the following form:
+%%   \bibitem{key}...
+%%
+
+% \bibitem{}
+
+% \end{thebibliography}
+
+
+\end{document}
+
+%%
+%% End of file 
